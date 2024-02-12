@@ -1,0 +1,6 @@
+object Solution {
+    def isAnagram(s: String, t: String): Boolean = {
+        //s.sorted==t.sorted
+        ('a' to 'z').forall(x=>(s.count(_ == x) == t.count(_ == x)))
+    }
+}

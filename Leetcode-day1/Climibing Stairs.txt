@@ -1,0 +1,15 @@
+object Solution {
+    def climbStairs(n: Int): Int = {
+        var a=1
+        var b=2
+        var ans=0
+        if (n==2 || n==1) return n
+        for(i<-3 to n)
+        {
+            ans=a+b
+            a=b
+            b=ans
+        }
+        ans
+    }
+}

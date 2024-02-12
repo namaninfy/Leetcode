@@ -1,0 +1,21 @@
+object Solution {
+    def minDistance(word1: String, word2: String): Int = {
+        var n=word1.size
+        var m=word2.size
+        var dp=Array.fill(n)(Array.fill(m)(-1))
+        return f(n-1,m-1,word1,word2,dp)
+    }
+    def f(i:Int,j:Int,word1:String,word2:String,dp:Array[Array[Int]]):Int={
+
+        if(i<0) return j+1 //min insert ope to convert "" to "ro"
+        if(j<0) return i+1 //min delete operation to convert "hor" to ""(empty str)
+        
+        if(dp(i)(j)!= -1) return dp(i)(j)
+        if(word1(i) == word2(j)) return f(i-1,j-1,word1,word2,dp)
+
+        dp(i)(j)=1+Math.min( f(i-1,j,word1,word2,dp), 
+                    Math.min( f(i,j-1,word1,word2,dp), f(i-1,j-1,word1,word2,dp) ) )
+        
+        return dp(i)(j)
+    }
+}

@@ -1,0 +1,22 @@
+object Solution {
+    def longestConsecutive(nums: Array[Int]): Int = {
+        if(nums.size == 0) return 0
+        var arr: Array[Int]=nums.sorted
+        var (curCount,len,lastSmall)=(0,1,Int.MinValue)
+        for(i<-0 until arr.size)
+        {
+            if(arr(i)-1 == lastSmall)
+            {
+                curCount+=1
+                lastSmall=arr(i)
+            }
+            else if(arr(i) != lastSmall)
+            {
+                curCount=1
+                lastSmall=arr(i)
+            }
+            len=Math.max(len,curCount)
+        }
+        return len
+    }
+}

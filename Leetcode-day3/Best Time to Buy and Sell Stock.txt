@@ -1,0 +1,12 @@
+object Solution {
+    def maxProfit(prices: Array[Int]): Int = {
+        var maxP=0
+        var minP=prices(0)
+        for(i<-1 to prices.size-1)
+        {
+            maxP=Math.max(maxP,prices(i)-minP)
+            minP=Math.min(minP,prices(i))
+        }
+        maxP
+    }
+}

@@ -1,0 +1,9 @@
+object Solution {
+    def lengthOfLongestSubstring(s: String): Int = {
+        
+        s.scanLeft("")((curStr:String,char:Char) =>
+         curStr.substring(1+curStr.indexOf(char))+char).map(_.length).reduce(Math.max)
+
+    
+    }
+}

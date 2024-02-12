@@ -1,0 +1,10 @@
+object Solution {
+    def maxDepth(root: TreeNode): Int = {
+        if(root == null) return 0
+
+        var lh=maxDepth(root.left)
+        var rh=maxDepth(root.right)
+
+        1+Math.max(lh,rh)
+    }
+}

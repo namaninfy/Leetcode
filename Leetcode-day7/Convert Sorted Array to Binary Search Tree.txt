@@ -1,0 +1,17 @@
+object Solution {
+    def sortedArrayToBST(nums: Array[Int]): TreeNode = {
+        if(nums.length ==0) return null;
+        return createTree(0,nums.length-1,nums)
+    }
+    def createTree(st:Int,end:Int,nums:Array[Int]):TreeNode={
+        
+        if(st>end) return null;
+        var mid=(st+end)/2
+
+        var node:TreeNode=new TreeNode(nums(mid))
+        node.left=createTree(st,mid-1,nums)
+        node.right=createTree(mid+1,end,nums)
+        return node
+
+    }
+}

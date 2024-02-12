@@ -1,0 +1,19 @@
+object Solution {
+    def threeSum(nums: Array[Int]): List[List[Int]] = {
+        var st=scala.collection.mutable.Set[List[Int]]()
+  for(i<-0 until nums.size)
+  {
+    var hashset=scala.collection.mutable.Set[Int]()
+    for(j<-i+1 until nums.size)
+    {
+      var third = -(nums(i)+nums(j))
+      if(hashset.contains(third)){
+        var a= List(nums(i),nums(j),third).sorted
+        st.add(a) 
+      }
+      hashset.add(nums(j))
+    }
+  }
+  st.toList
+    }
+}

@@ -1,0 +1,13 @@
+object Solution {
+  def coinChange(coins: Array[Int], amount: Int): Int = {
+    val MAX = 10_001
+    val dp:Array[Int] = Array.fill(amount+1)(MAX)
+    dp(0)=0
+    coins.sorted.reverse.foreach { denomination =>
+      (0 until dp.size-denomination).foreach { x =>
+        if(dp(x)<MAX) dp(x+denomination) = dp(x+denomination) min (dp(x)+1)
+      }
+    }
+    if(dp(amount)==MAX) -1 else dp(amount)        
+  }
+}

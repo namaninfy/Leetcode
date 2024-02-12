@@ -1,0 +1,18 @@
+object Solution {
+    def rob(nums: Array[Int]): Int = {
+        var n=nums.size
+        var dp=Array.fill(n)(-1)
+        return f(n-1,nums,dp)
+    }
+    def f(idx:Int,nums: Array[Int],dp:Array[Int]):Int={
+
+        if(idx == 0) return nums(idx)
+        if(idx < 0) return 0;
+        if(dp(idx) != -1) return dp(idx)
+        var pick = nums(idx) + f(idx-2,nums,dp)
+        var notpick = 0 + f(idx-1,nums,dp)
+
+        dp(idx)=Math.max(pick,notpick)
+        dp(idx)
+    }
+}

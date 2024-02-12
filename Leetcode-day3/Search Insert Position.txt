@@ -1,0 +1,21 @@
+object Solution {
+    def searchInsert(nums: Array[Int], target: Int): Int = {
+        /*var mid=0
+        var low=0
+        var high=nums.size-1
+        if(target>nums(high))
+          high+1
+        while(low<=high)
+        {
+            mid=(low+high)/2
+            if(target==nums(mid)) return mid; if(nums(mid)>target) high-=1 else low+=1
+        }
+        low*/
+
+        nums.indexOf(target) match{
+         case -1 => nums.count(_ < target)
+         case n => n
+        }
+    
+    }
+}

@@ -1,0 +1,25 @@
+object Solution {
+    def maxProfit(prices: Array[Int], fee: Int): Int = {
+        var n=prices.size
+        val dp: Array[Array[Int]] = Array.fill(n)(Array.fill(2)(-1))
+        return f(0,1,prices,n,dp,fee)
+    }
+
+     def f(ind:Int,buy:Int,prices: Array[Int],n:Int,dp:Array[Array[Int]],fee:Int):Int={
+        
+
+        if(ind == n) return 0
+        if(dp(ind)(buy)!= -1) return dp(ind)(buy)
+        var profit=0
+        if(buy == 1){
+            profit=Math.max(-prices(ind)+f(ind+1,0,prices,n,dp,fee),
+            0+f(ind+1,1,prices,n,dp,fee))
+        }
+        else{
+            profit=Math.max(prices(ind)-fee +f(ind+1,1,prices,n,dp,fee),
+            0+f(ind+1,0,prices,n,dp,fee))
+        }
+        dp(ind)(buy)=profit
+        return dp(ind)(buy)
+    }
+}

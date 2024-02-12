@@ -1,0 +1,16 @@
+object Solution {
+    def groupAnagrams(strs: Array[String]): List[List[String]] = {
+        //strs.toList.groupBy(r=>r.sorted).values.toList
+        var mp=scala.collection.mutable.Map[String,List[String]]()
+  
+  for(ch<-strs)
+  {
+    var word=ch.sorted
+    //mp += (word -> (ch :: mp.getOrElse(word, Nil)))
+    mp(word)= ch :: mp.getOrElse(word, Nil)
+  }
+  
+  mp.values.toList
+
+    }
+}

@@ -1,0 +1,16 @@
+class NestedIterator(_nestedList: List[NestedInteger]) {
+    import scala.collection.mutable.ArrayBuffer
+	val list: ArrayBuffer[NestedInteger] = ArrayBuffer()
+    list.appendAll(_nestedList)
+    def next(): Int = {
+        list.remove(0).getInteger
+    }
+    
+    def hasNext(): Boolean = {
+        while(list.nonEmpty && !list.head.isInteger){
+            val nex = list.remove(0).getList
+            list.prependAll(nex)
+        }
+        list.nonEmpty
+    }
+}

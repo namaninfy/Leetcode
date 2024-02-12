@@ -1,0 +1,24 @@
+object Solution {
+    def myPow(x: Double, n: Int): Double = {
+        var nX=x
+        var nn=n
+        if(n<0)
+        {
+            nX=1/nX
+            nn=Math.abs(n)
+        }
+        nn match{
+            case 0 => 1
+            case 1 => nX
+            case 2 => nX*nX
+            //case _ if (nX%2==0) => myPow(nX*nX,nn/2)
+            //case _  => nX*myPow(nX*nX,(nn)/2)
+            case _ =>{
+                nn%2 match{
+                    case 0 => myPow(nX*nX,nn/2)
+                    case 1 => nX*myPow(nX*nX,(nn)/2)
+                }
+            }
+        }
+    }
+}

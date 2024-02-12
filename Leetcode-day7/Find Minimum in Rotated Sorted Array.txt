@@ -1,0 +1,18 @@
+object Solution {
+  def findMin(nums: Array[Int]): Int = {
+    
+    @annotation.tailrec
+    def loop(left: Int, right: Int): Int =
+      if (left == right)
+        nums(left)
+      else {
+        val middle = (left + right) / 2
+        if (nums(middle) > nums(right))
+          loop(left = middle + 1, right)
+        else
+          loop(left, right = middle)
+      }
+    
+    loop(left = 0, right = nums.size - 1)
+  }
+}

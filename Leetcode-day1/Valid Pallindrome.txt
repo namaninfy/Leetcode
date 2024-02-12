@@ -1,0 +1,9 @@
+object Solution {
+    def isPalindrome(s: String): Boolean = {
+        var pattern="[^A-Za-z0-9]"
+        var res=s.replaceAll(pattern,"").toLowerCase()
+        var res1=s.replaceAll(pattern,"").toLowerCase().reverse
+
+        res==res1
+    }
+}

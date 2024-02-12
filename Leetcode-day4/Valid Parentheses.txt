@@ -1,0 +1,13 @@
+object Solution {
+    def isValid(s: String): Boolean = {
+        var st=scala.collection.mutable.Stack[Char]()
+        val pairs = Map(')' -> '(', '}' -> '{', ']' -> '[')
+        s.foreach{
+            case c if pairs.contains(c) =>
+               if(st.isEmpty || pairs(c) !=st.pop()) return false
+            case c => st.push(c)
+            }
+        st.isEmpty
+
+    }
+}

@@ -1,0 +1,28 @@
+import scala.collection.mutable.Stack
+class MinStack() {
+    
+    private val stack: Stack[Int] = Stack()
+    private val minStack: Stack[Int] = Stack()
+    def push(`val`: Int) {
+        stack.push(`val`)
+        if(minStack.isEmpty || `val` <= minStack.top)
+          minStack.push(`val`)
+    }
+
+    def pop() {
+        if(stack.nonEmpty){
+            val rem=stack.pop()
+            if(minStack.nonEmpty && rem == minStack.top)
+              minStack.pop()
+        }
+    }
+
+    def top(): Int = {
+        if(!stack.isEmpty) return stack.top else throw new Exception("Stack is empty.")
+    }
+
+    def getMin(): Int = {
+        if(minStack.nonEmpty) return minStack.top else throw new Exception("Stack is empty.")
+    }
+
+}

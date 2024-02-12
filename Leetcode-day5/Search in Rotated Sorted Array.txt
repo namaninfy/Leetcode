@@ -1,0 +1,31 @@
+object Solution {
+    def search(nums: Array[Int], target: Int): Int = {
+        
+        var low=0
+        var high=nums.length-1
+        var mid= -1
+        while(low<=high)
+        {
+            var mid=(low+high)/2
+            if(nums(mid) == target) return mid
+            
+            //left sorted
+            if(nums(low)<=nums(mid))
+            {
+                if(nums(low)<=target && target<=nums(mid))
+                high=mid-1
+                else
+                low=mid+1
+            }
+            //right sorted
+            else
+            {
+                if(nums(mid)<=target && target<=nums(high))
+                low=mid+1
+                else
+                high=mid-1
+            }
+        }
+        return mid
+    }
+}
